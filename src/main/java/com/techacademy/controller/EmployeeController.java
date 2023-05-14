@@ -86,15 +86,15 @@ public class EmployeeController {
     }
     
     /** 削除処理 */
-    @PostMapping("/delete/{id}/")
-    public String postDelete(Employee employee, @PathVariable("id") Integer id) {
+    @GetMapping("/delete/{id}/")
+    public String getDelete(Employee employee, @PathVariable("id") Integer id) {
         // サービス経由で従業員情報を取得
         Employee tableEmployee = service.getEmployee(id);
         
         tableEmployee.setDeleteFlag(1);
         tableEmployee.setUpdatedAt(employee.getUpdatedAt());
         
-        service.saveEmployee(employee);
+        service.saveEmployee(tableEmployee);
         
         return "redirect:/employee/list";
     }
