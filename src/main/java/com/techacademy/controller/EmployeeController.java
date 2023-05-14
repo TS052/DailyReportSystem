@@ -18,7 +18,7 @@ import com.techacademy.service.EmployeeService;
 @RequestMapping("employee")
 public class EmployeeController {
     private final EmployeeService service;
-    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    
     
     public EmployeeController(EmployeeService service) {
         this.service = service; 
@@ -50,6 +50,8 @@ public class EmployeeController {
     /** 登録処理 */
     @PostMapping("/register")
     public String postRegister(Employee employee,Authentication authentication) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
         employee.getAuthentication().setEmployee(employee);
         employee.setDeleteFlag(0);
         employee.setCreatedAt(timestamp);
@@ -90,9 +92,11 @@ public class EmployeeController {
     public String getDelete(Employee employee, @PathVariable("id") Integer id) {
         // サービス経由で従業員情報を取得
         Employee tableEmployee = service.getEmployee(id);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
+        tableEmployee.setUpdatedAt(timestamp);
         tableEmployee.setDeleteFlag(1);
-        tableEmployee.setUpdatedAt(employee.getUpdatedAt());
+        
         
         service.saveEmployee(tableEmployee);
         

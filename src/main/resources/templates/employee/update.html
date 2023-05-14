@@ -6,8 +6,9 @@
 	<link rel="stylesheet" th:href="@{/css/employee/update.css}">
 </head>
 <body>
-    <h1>日報管理システム</h1>
-    <h2>従業員管理　日報管理</h2>
+    <div class ="header">
+    <h1>日報管理システム <span>従業員管理　日報管理</span></h1>
+    </div>
     <h2>id:<a th:text="${employee.id}"></a>の従業員　編集ページ</h2>
     <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}" th:object="${employee}">
         <label for="code">社員番号</label>
@@ -28,10 +29,9 @@
             <option th:each="item:${T(com.techacademy.entity.Authentication.Role).values()}" th:value="${item}" th:text="${item}">
         </select>
         <br>
-        <br>
         <input type="submit" value="投稿">
         <br>
-        <a th:href="@{/delete/{id}/(id=${employee.id})}">この従業員情報を削除する</a>
+        <a th:href="@{/employee/delete/{id}/(id=${employee.id})}">この従業員情報を削除する</a>
         <br>
         <a th:href="@{/employee/list}">一覧に戻る</a>
     </form>
