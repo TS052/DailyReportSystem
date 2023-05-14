@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>日報管理システム</title>
+<link rel="stylesheet" th:href="@{/css/employee/list.css}">
+</head>
+<body>
+    <h1>日報 一覧</h1>
+    <!--<table>
+        <tr>
+            <th class="employee.name">氏名</th>
+            <th class="employee.date">日付</th>
+            <th class="employee.title">タイトル</th>
+            <th class="employee.action">操作</th>
+        </tr>
+        <tr th:each="employee : ${employeelist}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${#temporals.format(employee.createdAt, 'yyyy/MM/dd HH:mm:ss')}"></td>　
+            <td th:text="${employee.title}"></td>
+            <td>
+                <a th:href="@{/employee/show/{id}/(id=${employee.id})}">詳細を見る</a>
+            </td>
+        </tr>
+    </table>-->
+</body>
+</html>

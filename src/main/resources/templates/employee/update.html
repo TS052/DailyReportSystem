@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>日報管理システム</title>
+	<link rel="stylesheet" th:href="@{/css/employee/update.css}">
+</head>
+<body>
+    <h1>日報管理システム</h1>
+    <h2>従業員管理　日報管理</h2>
+    <h2>id:<a th:text="${employee.id}"></a>の従業員　編集ページ</h2>
+    <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}" th:object="${employee}">
+        <label for="code">社員番号</label>
+        <br>
+        <a th:text="*{authentication.code}"></a>
+        <br>
+        <label for="name">氏名</label>
+        <br>
+        <input type="text" th:field="*{name}">
+        <br>
+        <label for="password ">パスワード</label>
+        <br>
+        <input type="text" th:field="*{authentication.password}">
+        <br>
+        <label for="role">権限</label>
+        <br>
+        <select th:field="*{authentication.role}">
+            <option th:each="item:${T(com.techacademy.entity.Authentication.Role).values()}" th:value="${item}" th:text="${item}">
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="投稿">
+        <br>
+        <a th:href="@{/employee/list}" th:action="@{/employee/delete/{id}/(id=${employee.id})}">この従業員情報を削除する</a>
+        <br>
+        <a th:href="@{/employee/list}">一覧に戻る</a>
+    </form>
+</body>
+</html>
