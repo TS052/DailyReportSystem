@@ -1,6 +1,5 @@
 package com.techacademy.entity;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,14 +50,14 @@ public class Employee {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Authentication authentication;
     
-    /**
+    
     @PreRemove
     @Transactional
     private void preRemove() {
         
         if (authentication!=null) {
-            authentication.setEmployee_id(null);
+            authentication.setEmployee(null);
         } 
-    }*/
+    }
 
 }
