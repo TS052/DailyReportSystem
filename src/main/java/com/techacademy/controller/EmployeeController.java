@@ -2,6 +2,8 @@ package com.techacademy.controller;
 
 import java.sql.Timestamp;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.techacademy.entity.Authentication;
 import com.techacademy.entity.Employee;
 import com.techacademy.service.EmployeeService;
 
@@ -19,6 +20,8 @@ import com.techacademy.service.EmployeeService;
 public class EmployeeController {
     private final EmployeeService service;
     
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
     public EmployeeController(EmployeeService service) {
         this.service = service; 
@@ -49,13 +52,21 @@ public class EmployeeController {
 
     /** 登録処理 */
     @PostMapping("/register")
-    public String postRegister(Employee employee,Authentication authentication) {
+    public String postRegister(Employee employee) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
         employee.getAuthentication().setEmployee(employee);
         employee.setDeleteFlag(0);
         employee.setCreatedAt(timestamp);
         employee.setUpdatedAt(timestamp);
+        
+     // 入力されたパスワード
+        String pass = employee.getAuthentication().getPassword();
+        // 暗号化したパスワード
+        String encPass = passwordEncoder.encode(pass);
+        //　暗号化したパスワードをセットしなおす
+        employee.getAuthentication().setPassword(encPass);
+        
         // 登録
         service.saveEmployee(employee);
         // 一覧画面にリダイレクト

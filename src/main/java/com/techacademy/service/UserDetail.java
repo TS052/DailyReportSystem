@@ -1,11 +1,19 @@
 package com.techacademy.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.techacademy.entity.Authentication;
 import com.techacademy.entity.Employee;
 
 public class UserDetail implements UserDetails {
@@ -13,11 +21,15 @@ public class UserDetail implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     private final Employee employee;
-    private final Collection<? extends GrantedAuthority> authorities;
+    //private final Collection<? extends GrantedAuthority> authorities;
+    private final List<SimpleGrantedAuthority> authorities;
+    
 
     public UserDetail(Employee employee) {
         this.employee = employee;
-        this.authorities = new ArrayList<GrantedAuthority>();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority(employee.getAuthentication().getRole().toString()));
+        this.authorities = authorities;
     }
 
     public Employee getEmployee() {
@@ -63,4 +75,5 @@ public class UserDetail implements UserDetails {
         return true;
     }
 
+ 
 }

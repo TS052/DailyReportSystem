@@ -3,9 +3,11 @@ package com.techacademy.service;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.techacademy.entity.Authentication;
 import com.techacademy.entity.Employee;
 import com.techacademy.repository.EmployeeRepository;
 
@@ -13,8 +15,8 @@ import com.techacademy.repository.EmployeeRepository;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-
-    @Autowired
+    
+    
     public EmployeeService(EmployeeRepository repository) {
         this.employeeRepository = repository;
     }
@@ -35,12 +37,4 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
     
-
-    // 削除を行なう
-    @Transactional
-    public void deleteEmployee(Set<Integer> idck) {
-        for(Integer id : idck) {
-            employeeRepository.deleteById(id);
-        }
-    }
 }

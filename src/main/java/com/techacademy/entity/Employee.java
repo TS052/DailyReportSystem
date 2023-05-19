@@ -50,14 +50,5 @@ public class Employee {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Authentication authentication;
     
-    
-    @PreRemove
-    @Transactional
-    private void preRemove() {
-        
-        if (authentication!=null) {
-            authentication.setEmployee(null);
-        } 
-    }
 
 }

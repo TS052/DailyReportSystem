@@ -8,7 +8,7 @@
     <h1>日報管理システム</h1>
     <h2>ログイン</h2>
     <p class="err" th:if="${param.error}">ユーザ名かパスワードが一致しませんでした。</p>
-    <form method="post" action="/login" th:action="@{/logon}">
+    <form method="post" action="/login" th:action="@{/login}">
     <table>
         <tr>
             <td><label for="code">社員番号</label></td>
