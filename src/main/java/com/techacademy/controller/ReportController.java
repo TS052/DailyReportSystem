@@ -31,6 +31,12 @@ public class ReportController {
         return "report/top";
     }
     
+    @GetMapping("/reportregister")
+    public String getReportRegister() {
+        
+        return "report/reportregister";
+    }
+    
     /**
     @GetMapping("reportshow/{id}/")
     public String getReportShow(@PathVariable("id") Integer id, Model model) {
@@ -38,12 +44,6 @@ public class ReportController {
         model.addAttribute("employee", service.getReport(id));
         
         return "reportshow";
-    }
-    
-    @GetMapping("reportregister")
-    public String getReportRegister() {
-        
-        return "eportregister";
     }
     
     /**登録画面を表示 
