@@ -9,7 +9,6 @@ import com.techacademy.repository.ReportRepository;
 
 @Service
 public class ReportService {
-
     private final ReportRepository reportRepository;
     
     

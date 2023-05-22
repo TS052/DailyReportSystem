@@ -23,15 +23,15 @@ public class ReportController {
         this.service = service; 
     }
     
-    @GetMapping("top")
+    @GetMapping("/top")
     public String getList(Model model) {
         
         model.addAttribute("reportlist", service.getReportList());
         
-        return "top";
+        return "report/top";
     }
     
-    
+    /**
     @GetMapping("reportshow/{id}/")
     public String getReportShow(@PathVariable("id") Integer id, Model model) {
         
@@ -40,15 +40,21 @@ public class ReportController {
         return "reportshow";
     }
     
-    /**登録画面を表示 */
+    @GetMapping("reportregister")
+    public String getReportRegister() {
+        
+        return "eportregister";
+    }
+    
+    /**登録画面を表示 
     @GetMapping("reportregister")
     public String getReportRegister(@ModelAttribute Report report) {
         
         return "reportregister";
-    }
+    }**/
 
-    /** 登録処理 */
-    @PostMapping("reportregister")
+    /** 登録処理 **/
+    @PostMapping("/reportregister")
     public String postReportRegister(Report report) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
@@ -59,7 +65,7 @@ public class ReportController {
         // 一覧画面にリダイレクト
         return "redirect:index";
     }
-    
+    /**
     @GetMapping("reportupdate/{id}/")
     public String getReport(@PathVariable("id") Integer id, Model model) {
         
@@ -68,7 +74,7 @@ public class ReportController {
         return "reportupdate";
     }
     
-    @PostMapping("reportupdate/{id}/")
+    @PostMapping("/reportupdate/{id}/")
     public String postUpdate(Report report , @PathVariable("id") Integer id) {
         
      // サービス経由で従業員情報を取得
@@ -80,7 +86,7 @@ public class ReportController {
         
         service.saveReport(tableReport);
         
-        return "redirect:index";
-    }
+        return "redirect:/report/index";
+    }**/
     
 }
