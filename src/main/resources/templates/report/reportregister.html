@@ -6,24 +6,24 @@
 </head>
 <body>
     <h1>日報管理システム <span>従業員管理　日報管理</span></h1>
-    <form method="post" th:action="@{/report/reportregister}" th:object="${employee}">
+   <form method="post" th:action="@{/report/reportregister}" >
         <label for="reportDate">日付</label>
         <br>
         <input type=="date" th:field="*{report.reportDate}">                                             
         <br>
         <label for="name">氏名</label>
         <br>
-         <input type="text" th:field="*{name}">
+        <input type="text" th:field="*{report.employee.name}">
         <br>
         <label for="title">タイトル</label>
         <br>
         <input type="text" th:field="*{report.title}">
         <br>
-        <label for="content">内容</label>
+        <label for="content}">内容</label>
         <br>
         <input type="text" th:field="*{report.content}">
         <br>
-        <input type="submit" value="投稿"> 
+        <input type="submit" value="登録実行">
         <br>
         <a th:href="@{/report/index}">一覧に戻る</a>
     </form>
