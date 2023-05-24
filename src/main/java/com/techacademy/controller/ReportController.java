@@ -68,18 +68,20 @@ public class ReportController {
         return "redirect:index";
     }
     
+    /** 詳細　**/
     @GetMapping("/reportshow/{id}/")
     public String getReportShow(@PathVariable("id") Integer id, Model model) {
         
-        model.addAttribute("employee", service.getReport(id));
+        model.addAttribute("report", service.getReport(id));
         
         return "report/reportshow";
     }
-    /** **/
+    
+    /** 更新　**/
     @GetMapping("/reportupdate/{id}/")
     public String getReportupdate(@PathVariable("id") Integer id, Model model) {
         
-        model.addAttribute("employee", service.getReport(id));
+        model.addAttribute("report", service.getReport(id));
         
         return "report/reportupdate";
     }
@@ -89,10 +91,12 @@ public class ReportController {
         
      // サービス経由で従業員情報を取得
         Report tableReport = service.getReport(id);
-
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
         // テーブルから取得した従業員情報へ画面側からの従業員情報の内容を上書き
         tableReport.setTitle(report.getTitle());
         tableReport.setContent(report.getContent());
+        tableReport.setUpdatedAt(timestamp);
         
         service.saveReport(tableReport);
         
