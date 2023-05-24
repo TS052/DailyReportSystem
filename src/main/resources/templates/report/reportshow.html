@@ -2,9 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>日報管理システム</title>
 </head>
 <body>
-
+    <div class ="header">
+    <h1>日報管理システム <span>従業員管理　日報管理</span></h1>
+    </div>
+    <table>
+        <tr><th>氏名</th><td th:text="${report.employee.name}"></td></tr>
+        <tr><th>日付</th><td th:text="${report.reportDate}"></td></tr>
+        <tr><th>タイトル</th><td th:text="${report.title}"></td></tr>
+        <tr><th>内容</th><td th:text="${report.content}"></td></tr>
+        <tr><th>登録日時</th><td th:text="${report.createdAt}"></td></tr>
+        <tr><th>更新日時</th><td th:text="${report.updatedAt}"></td></tr>       
+     </table>   
+        <a th:href="@{/report/reportupdate}">この日報を編集する</a>
+        <a th:href="@{/report/index}">一覧に戻る</a>
 </body>
 </html>

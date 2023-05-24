@@ -1,6 +1,7 @@
 package com.techacademy.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Report {
     /** 日報の日付 */
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Timestamp reportDate;
+    private LocalDate reportDate;
     
     /** タイトル。20桁 */
     @Column(length = 255)
