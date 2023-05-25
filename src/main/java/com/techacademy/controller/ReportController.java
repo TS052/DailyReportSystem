@@ -85,7 +85,7 @@ public class ReportController {
         
         return "report/reportupdate";
     }
-    
+                                    
     @PostMapping("/reportupdate/{id}/")
     public String postUpdate(Report report , @PathVariable("id") Integer id) {
         
