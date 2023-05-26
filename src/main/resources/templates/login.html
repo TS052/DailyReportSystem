@@ -3,9 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>日報管理システム</title>
+	<link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
+    <div class ="header">
     <h1>日報管理システム</h1>
+    </div>
     <h2>ログイン</h2>
     <p class="err" th:if="${param.error}">ユーザ名かパスワードが一致しませんでした。</p>
     <form method="post" action="/login" th:action="@{/login}">

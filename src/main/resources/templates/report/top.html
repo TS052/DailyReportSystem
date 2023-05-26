@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>日報管理システム</title>
+    <link rel="stylesheet" th:href="@{/css/report/top.css}">
 </head>
 <body>
-    <h1>日報管理システム <span>従業員管理　日報管理</span></h1>
-    <form method="post" th:action="@{/logout}">
-        <input type="submit" value="ログアウト">
-    </form><br>
+    <div class ="header">
+    <h1>日報管理システム <span>従業員管理　日報管理 <a th:href="@{/login}"> ログアウト</a></span></h1>
+    </div>
     <h2>日報管理システムへようこそ</h2>
     <table>
         <tr>

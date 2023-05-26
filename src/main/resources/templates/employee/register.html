@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class ="header">
-    <h1>日報管理システム <span>従業員管理　日報管理</span></h1>
+    <h1>日報管理システム <span>従業員管理　日報管理 <a th:href="@{/login}"> ログアウト</a></span></h1>
     </div>
     <h2>従業員　新規登録ページ</h2>
     <form method="post" th:action="@{/employee/register}" th:object="${employee}">

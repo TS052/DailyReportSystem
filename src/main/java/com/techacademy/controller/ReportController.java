@@ -1,6 +1,5 @@
 package com.techacademy.controller;
 
-
 import java.sql.Timestamp;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,9 +26,9 @@ public class ReportController {
     }
     
     @GetMapping("/top")
-    public String getList(Model model) {
+    public String getList(Model model,@AuthenticationPrincipal UserDetail userDetail) {
         
-        model.addAttribute("reportlist", service.getReportEmpList(null));
+        model.addAttribute("reportlist", service.getReportEmpList(userDetail.getEmployee()));
         
         return "report/top";    
     }
