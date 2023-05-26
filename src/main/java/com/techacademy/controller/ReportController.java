@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.techacademy.entity.Employee;
 import com.techacademy.entity.Report;
 import com.techacademy.service.ReportService;
 import com.techacademy.service.UserDetail;
@@ -30,9 +29,9 @@ public class ReportController {
     @GetMapping("/top")
     public String getList(Model model) {
         
-        model.addAttribute("reportlist", service.getReportList());
+        model.addAttribute("reportlist", service.getReportEmpList(null));
         
-        return "report/top";
+        return "report/top";    
     }
     
     /**一覧画面を表示 **/

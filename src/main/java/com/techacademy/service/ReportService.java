@@ -17,13 +17,13 @@ public class ReportService {
         this.reportRepository = repository;
     }
 
-    /* 全件を検索して返す
+    /* 全件を検索して返す*/
     public List<Report> getReportList() {
         // リポジトリのfindAllメソッドを呼び出す
         return reportRepository.findAll();
-    }*/
+    }
     
-    public List<Report> getReportList(Employee employee) {
+    public List<Report> getReportEmpList(Employee employee) {
  
         return reportRepository.findByEmployee(employee);
     }
