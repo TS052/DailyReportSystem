@@ -1,1 +1,27 @@
 @charset "UTF-8";
+
+div.header {
+    background-color:black;
+    color:white;
+    display:block;
+}
+
+span{
+    font-size:20px;
+}
+
+span a{
+    color:white;
+    padding:10px;
+    text-decoration: none;
+}
+
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}
+
+.content{
+	width: 30%;
+	padding: 1em 0.5em;
+	line-height:8;
+}

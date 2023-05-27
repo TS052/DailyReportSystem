@@ -10,6 +10,12 @@ span{
 	font-size:20px;
 }
 
+span a{
+    color:white;
+    padding:10px;
+    text-decoration: none;
+}
+
 th,td {
     border: solid 1px;   
     padding: 10px;           

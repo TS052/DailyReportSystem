@@ -20,7 +20,6 @@ import com.techacademy.service.UserDetail;
 public class ReportController {
     private final ReportService service;
     
-    
     public ReportController(ReportService service) {
         this.service = service; 
     }
